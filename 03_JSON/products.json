@@ -1,0 +1,20 @@
+[
+    {
+        "id" : 1,
+        "name": "Laptop",
+        "price": "54999",
+        "category": "HP"
+    },
+    {
+        "id" : 2,
+        "name": "Mobile",
+        "price": "14999",
+        "category": "Redmi"
+    },
+    {
+        "id" : 2,
+        "name": "TV",
+        "price": "25999",
+        "category": "Sony"
+    }
+]

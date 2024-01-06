@@ -15,4 +15,9 @@
         <Price>25999</Price>
         <Company>Sony</Company>
     </Product>
+    <Product id="4">
+        <Name>Fridge</Name>
+        <Price>25999</Price>
+        <Company>Sony</Company>
+    </Product>
 </Products>

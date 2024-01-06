@@ -16,5 +16,11 @@
         "name": "TV",
         "price": "25999",
         "category": "Sony"
+    },
+    {
+        "id" : 3,
+        "name": "Fridge",
+        "price": "25999",
+        "category": "Sony"
     }
 ]

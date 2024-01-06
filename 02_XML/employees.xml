@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+
+<Employees>
+    <Employee id="EMP01">
+        <Name>ABC</Name>
+    </Employee>
+    <Employee id="EMP02">
+        <Name>XYZ</Name>
+    </Employee>
+
+    <Employee />
+</Employees>

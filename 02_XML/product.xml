@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<Products>
+    <Product id="1">
+        <Name>Laptop</Name>
+        <Price>52999</Price>
+        <Company>HP</Company>
+    </Product>
+    <Product id="2">
+        <Name>Mobile</Name>
+        <Price>14999</Price>
+        <Company>Redmi</Company>
+    </Product>
+    <Product id="3">
+        <Name>TV</Name>
+        <Price>25999</Price>
+        <Company>Sony</Company>
+    </Product>
+</Products>

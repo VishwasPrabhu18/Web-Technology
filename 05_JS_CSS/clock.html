@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div style="display: flex; justify-content: center; align-items: center; overflow: hidden;">
+        <h1 id="hour">00</h1>
+        <h1>:</h1>
+        <h1 id="minute">00</h1>
+        <h1>:</h1>
+        <h1 id="second">00</h1>
+        <h1>:</h1>
+        <h1 id="milSec">00</h1>
+    </div>
+    <button onclick="setInterval(startClock, 0.001)">Start</button>
+
+    <script>
+        var h = 0, m = 0, s = 0, ms = 0;
+        const hour = document.getElementById("hour");
+        const minute = document.getElementById("minute");
+        const second = document.getElementById("second");
+        const milSec = document.getElementById("milSec");
+        function startClock() {
+            minute.textContent = s<60 ? (m<10 ? "0" + m : m) : (m<10 ? ("0" + m++, s=0) : m++, s=0);
+            second.textContent = ms<60 ? (s<10 ? "0" + s : s) : (s<10 ? ("0" + s++, ms=0) : s++, ms=0);
+            milSec.textContent = ms < 10 ? "0" + ms++ : ms++;
+        }
+    </script>
+</body>
+
+</html>

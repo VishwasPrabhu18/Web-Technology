@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms with JS</title>
+    <link rel="stylesheet" href="./utility.css">
+
+    <style>
+        p#msg{
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <form action="" onsubmit="return validate()">
+        <p id="msg"></p>
+        <p class="sub-para">Paragraph 1</p>
+        <p class="sub-para">Paragraph 2</p>
+        <p class="sub-para">Paragraph 3</p>
+
+        <p class="pseudo-elem">Psuedo Class</p>
+        
+        <p>Simple Para</p>
+        <div>
+            <p>Combinator Selector</p>
+        </div>
+
+        Name: <input type="text" name="name" id="name"/>
+        <input type="submit" />
+
+        <br><br>
+
+        <a href="home.html" target="_blank">Home Page Link</a>
+    </form>
+
+    <!-- <div id="box">
+        <div id="boll">
+            <h1>ha</h1>
+        </div>
+    </div> -->
+
+    <script src="./utility.js"></script>
+</body>
+</html>

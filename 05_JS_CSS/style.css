@@ -91,15 +91,3 @@ body {
     text-align: justify;
 }
 
-li {
-    margin: 0px 10px 0px -10px;
-    padding-bottom: 5px;
-}
-
-.hobbies:hover,
-.personalDetails:hover,
-.professionalDetails:hover {
-    border: 1px solid white;
-    background-color: rgb(0, 139, 163);
-    color: whitesmoke;
-}

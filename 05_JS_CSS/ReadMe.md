@@ -9,4 +9,3 @@
 
 </body>
 </html>
-[go]("https://stately-valkyrie-31b774.netlify.app")

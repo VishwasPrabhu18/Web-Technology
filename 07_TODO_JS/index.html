@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Todo List</title>
 </head>
 <body>
@@ -13,38 +13,35 @@
                 <h1 class="text-center bg-primary text-white">ToDos</h1>
             </div>
         </div>
-        <div class="row">
+
+        <div id="alertMsg" class="alert alert-warning alert-dismissible fade show" style="display: none;" role="alert">
+            <strong>Error!</strong> Fill all Fields.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+
+        <div class="row d-flex justify-content-evenly">
             <div class="col-md-6">
-                <table class="table table-striped table-hover">
+                <table id="todoList" class="table table-striped table-hover">
                     <thead>
                         <th class="d-none">ID</th>
                         <th>Name</th>
                         <th>Priority</th>
                         <th>Action</th>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <!-- <td>1</td> -->
-                            <td>Task 1</td>
-                            <td>High</td>
-                            <td class="d-flex gap-2 justify-end">
-                                <button class="btn btn-primary">Edit</button>
-                                <button class="btn btn-danger">Delete</button>
-                            </td>
-                        </tr>
+                    <tbody id="todoData">
                     </tbody>
                 </table>
             </div>
 
             <div class="col-md-3">
-                <form>
+                <form id="todoForm">
                     <div class="mb-3">
                         <label for="taskName" class="form-label">Task Name</label>
-                        <input type="text" name="" id="taskName" class="form-control">
+                        <input type="text" name="taskName" id="taskName" class="form-control">
                     </div>
                     <div class="mb-3">
                         <label for="priority" class="form-label">Priority</label>
-                        <select name="" id="priority" class="form-select">
+                        <select name="priority" id="priority" class="form-select">
                             <option value="High">High</option>
                             <option value="Medium">Medium</option>
                             <option value="Low">Low</option>
@@ -57,6 +54,7 @@
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="./js/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

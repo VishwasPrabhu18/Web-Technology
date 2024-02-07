@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Todo List</title>
 </head>
+
 <body>
     <div class="container">
-        <div class="row">
+        <div class="row mb-3">
             <div class="col-md-12">
-                <h1 class="text-center bg-primary text-white">ToDos</h1>
+                <h1 class="text-center bg-primary text-white p-2 rounded-bottom">ToDos</h1>
             </div>
         </div>
-
-        <div id="alertMsg" class="alert alert-warning alert-dismissible fade show" style="display: none;" role="alert">
-            <strong>Error!</strong> Fill all Fields.
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
+        <!--  style="display: none;" -->
+        <div id="alertMsg"></div>
 
         <div class="row d-flex justify-content-evenly">
             <div class="col-md-6">
@@ -48,13 +48,18 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <button class="btn btn-primary">Add Task</button>
+                        <button id="addTask" class="btn btn-primary" style="display: block;">Add Task</button>
+                        <button id="updateTask" class="btn btn-warning" style="display: none;">Update Task</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+
     <script src="./js/index.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>

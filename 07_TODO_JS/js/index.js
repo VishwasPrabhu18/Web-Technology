@@ -1,40 +1,39 @@
-let todos = [];
+//  read from local storage
+let todos = JSON.parse(localStorage.getItem("todos")) || [];
 
 const todoData = document.getElementById("todoData");
 const todoForm = document.getElementById("todoForm");
 const alertMsg = document.getElementById("alertMsg");
 
-todoForm.addEventListener("submit", (e) => {
+todoForm.addEventListener("submit", (e) => { 
     e.preventDefault();
-    const name = document.getElementById("taskName").value;
-    if (name === "") {
-        alertMsg.style.display = "block";
-        return;
-    }
-
-    const priority = document.getElementById("priority").value;
+    const todoName = document.getElementById("taskName").value;
+    const todoPriority = document.getElementById("priority").value;
     const todo = {
         id: todos.length + 1,
-        name,
-        priority,
+        name: todoName,
+        priority: todoPriority
     };
     todos.push(todo);
+    localStorage.setItem("todos", JSON.stringify(todos));
     renderTodos();
-    todoForm.reset();
 });
 
+
 const renderTodos = () => {
-    let todoList = "";
+    let data = "";
     todos.forEach((todo) => {
-        todoList += `
+        data += `
         <tr>
             <td>${todo.name}</td>
             <td>${todo.priority}</td>
             <td>
-                <button class="btn btn-primary">Edit</button>
-                <button class="btn btn-danger">Delete</button>
+                <button class="btn btn-success" onclick="deleteTodo(${todo.id})">Edit</button>
+                <button class="btn btn-danger" onclick="deleteTodo(${todo.id})">Delete</button>
             </td>
         </tr>`;
     });
-    todoData.innerHTML = todoList;
+    document.getElementById("todoListTbody").innerHTML = data;
 };
+
+// renderTodos();

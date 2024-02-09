@@ -62,10 +62,11 @@ const renderTodos = () => {
         </tr>`;
     } else {
         todos.forEach((todo) => {
+            const prioritySpan = todo.priority === "High" ? "danger" : todo.priority === "Medium" ? "warning": "secondary";
             data += `
         <tr>
             <td>${todo.name}</td>
-            <td>${todo.priority}</td>
+            <td><span class="badge bg-${prioritySpan}">${todo.priority}</span></td>
             <td>
                 <button class="btn btn-success" onclick="editTodo(${todo.id})"><i class="fa-solid fa-pen-to-square"></i></button>
                 <button class="btn btn-danger" onclick="deleteTodo(${todo.id})"><i class="fa-solid fa-trash"></i></button>

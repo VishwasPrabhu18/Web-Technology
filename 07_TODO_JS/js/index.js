@@ -67,8 +67,8 @@ const renderTodos = () => {
             <td>${todo.name}</td>
             <td>${todo.priority}</td>
             <td>
-                <button class="btn btn-success" onclick="editTodo(${todo.id})">Edit</button>
-                <button class="btn btn-danger" onclick="deleteTodo(${todo.id})">Delete</button>
+                <button class="btn btn-success" onclick="editTodo(${todo.id})"><i class="fa-solid fa-pen-to-square"></i></button>
+                <button class="btn btn-danger" onclick="deleteTodo(${todo.id})"><i class="fa-solid fa-trash"></i></button>
             </td>
         </tr>`;
         });

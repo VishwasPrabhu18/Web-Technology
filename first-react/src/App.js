@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./App.css";
 
-function MyButton() {
+function MyButton({ msg }) {
+  const [count, setCount] = useState(0);
+  const handleClick = () => {
+    // alert("Button Clicked : " + count);
+    setCount(count + 1);
+  }
   return (
     <>
-      <button>Click Here</button>
-
+      <button onClick={handleClick}>{msg} - {count}</button>
     </>
   );
 }
@@ -22,7 +26,7 @@ const App = () => {
 
   let content;
   if (user.age > 18) {
-    content = <MyButton />
+    content = <MyButton msg={"Google"} />
   }
 
   // create list of courses map
@@ -37,9 +41,11 @@ const App = () => {
       <h1 className='heading'>Hello World</h1>
       <h2>It is a nice day</h2>
       <h1>My name is {user.name}</h1>
+      <p>My age is {user.age}</p>
+      <p>My address is {user.address}</p>
       <img src={user.img} style={{ width: "200px", height: "200px" }} alt="random" />
       <br />
-      <MyButton />
+      <MyButton msg={"Click Here"} /> &nbsp;
       {content}
       <br />
 

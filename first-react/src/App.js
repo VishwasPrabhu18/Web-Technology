@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
 import "./App.css";
 
-function MyButton({ msg }) {
-  const [count, setCount] = useState(0);
-  const handleClick = () => {
-    // alert("Button Clicked : " + count);
-    setCount(count + 1);
-  }
+function MyButton({ msg, count, handleClick }) {
   return (
     <>
       <button onClick={handleClick}>{msg} - {count}</button>
@@ -15,6 +10,11 @@ function MyButton({ msg }) {
 }
 
 const App = () => {
+  const [count, setCount] = useState(0);
+  const handleClick = () => {
+    // alert("Button Clicked : " + count);
+    setCount(count + 1);
+  }
   // const name = "Vishwas Prabhu";
   // create use map
   const user = {
@@ -26,7 +26,7 @@ const App = () => {
 
   let content;
   if (user.age > 18) {
-    content = <MyButton msg={"Google"} />
+    content = <MyButton msg={"Google"} count={count} handleClick={handleClick} />
   }
 
   // create list of courses map
@@ -45,7 +45,7 @@ const App = () => {
       <p>My address is {user.address}</p>
       <img src={user.img} style={{ width: "200px", height: "200px" }} alt="random" />
       <br />
-      <MyButton msg={"Click Here"} /> &nbsp;
+      <MyButton msg={"Click Here"} count={count} handleClick={handleClick} /> &nbsp;
       {content}
       <br />
 

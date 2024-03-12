@@ -1,19 +1,9 @@
-import React from 'react'
+import "../App.css";
 
-const Square = ({ value, pos, setValues }) => {
-
-  const handleClick = (i) => {
-    setValues(values => {
-      const newValues = values.slice();
-      newValues[i] = 'X';
-      return newValues;
-    });
-
-  }
-
+const Square = ({ value, onSquareClick }) => {
   return (
-    <button onClick={() => handleClick(pos)} className='square'>{value}</button>
+    <button className='square' onClick={onSquareClick}>{value}</button>
   )
 }
 
-export default Square
+export default Square;

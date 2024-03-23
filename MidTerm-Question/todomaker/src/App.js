@@ -10,21 +10,23 @@ const App = () => {
   console.log(tasks);
 
   return (
-    <div className=''>
-      <h1>Todo Matic</h1>
-      <p>What needs to be done?</p>
+    <div className='flex justify-center m-8 w-auto'>
+      <div className="flex flex-col gap-4 border p-5 justify-center">
+        <h1>Todo Matic</h1>
+        <p>What needs to be done?</p>
 
-      <AddTask task={tasks} />
+        <AddTask task={tasks} />
 
-      <div>
-        <button type='button'>All</button>
-        <button type='button'>Active</button>
-        <button type='button'>Completed</button>
-      </div>
+        <div className='flex justify-center gap-2 px-3'>
+          <button className='bg-blue-400 px-2 py-1 w-28 rounded' type='button'>All</button>
+          <button className='bg-blue-400 px-2 py-1 w-28 rounded' type='button'>Active</button>
+          <button className='bg-blue-400 px-2 py-1 w-28 rounded' type='button'>Completed</button>
+        </div>
 
-      <div>
-        <h3>3 Tasks tremaining</h3>
-        <DisplayTask />
+        <div>
+          <h3>3 Tasks tremaining</h3>
+          <DisplayTask />
+        </div>
       </div>
     </div>
   )

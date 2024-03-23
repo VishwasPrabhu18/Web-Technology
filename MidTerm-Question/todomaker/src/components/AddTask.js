@@ -15,9 +15,9 @@ const AddTask = ({ task }) => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-                <input type='text' name='task' value={taskVal} onChange={handleChange}/>
-                <button type='submit'>Add</button>
+            <form onSubmit={handleSubmit} className=''>
+                <input className='border-2 border-slate-500 rounded mb-2 w-full py-2 px-2' type='text' name='task' value={taskVal} onChange={handleChange}/>
+                <button className='bg-lime-500 w-full py-1 rounded' type='submit'>Add</button>
             </form>
         </div>
     )

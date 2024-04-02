@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 
 const AddTask = ({ task }) => {
+    
     const [taskVal, setTaskVal] = useState("");
 
     const handleChange = (e) => {
@@ -9,7 +10,12 @@ const AddTask = ({ task }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        task.name = taskVal;
+        let data = JSON.parse(localStorage.getItem('tasks')) || [];
+
+        if (taskVal === "") return;
+        
+        data.push({ name: taskVal, isActive: true, completed: false });
+        localStorage.setItem('tasks', JSON.stringify(data));
         setTaskVal("");
     }
 

@@ -4,24 +4,13 @@ import AddTask from './components/AddTask';
 
 const App = () => {
 
-  const taskData = [
-    // give 10 task with random realworkd good task name related to CSE, isActive and completed
-    { name: "Create a new React App", isActive: true, completed: false },
-    { name: "Learn React", isActive: false, completed: true },
-    { name: "Learn Node.js", isActive: true, completed: false },
-    { name: "Learn Express.js", isActive: false, completed: true },
-    { name: "Learn MongoDB", isActive: true, completed: false },
-    { name: "Learn Mongoose", isActive: false, completed: true },
-    { name: "Learn Redux", isActive: true, completed: false },
-    { name: "Learn React-Router", isActive: false, completed: true },
-    { name: "Learn Redux-Thunk", isActive: true, completed: false },
-    { name: "Learn Redux-Saga", isActive: false, completed: true }         
-  ];
+  const taskData = JSON.parse(localStorage.getItem('tasks')) || [];
 
   const [tasks, setTasks] = useState({ name: "", isActive: true, completed: false });
   const [taskState, setTaskState] = useState("all");
 
-  console.log(tasks);
+  const activeCnt = taskData.filter(task => task.isActive).length;
+  const completedCnt = taskData.filter(task => task.completed).length;
 
   return (
     <div className='flex justify-center m-7 w-auto'>
@@ -40,7 +29,12 @@ const App = () => {
         </div>
 
         <div className="flex flex-col justify-center gap-2 px-3 mt-3">
-          <h3 className='font-semibold text-base'>{taskData.length} Tasks tremaining</h3>
+          <h3 className='font-semibold text-base'>
+            {
+              taskState === "all" ? taskData.length : taskState === "active" ? activeCnt : completedCnt
+            }
+            &nbsp;Tasks Remaining
+          </h3>
           <div className=''>
             {
               taskData.map((task, index) => {

@@ -5,17 +5,16 @@ const app = express();
 const routes = express.Router();
 
 routes.get('/students', (req, res) => {
-    StudentModel.find({}, (err, students) => {
-        if (err) {
-            res.status(500).send(err);
-        }
-        res.status(200).send(students);
+    StudentModel.find({}).then((students) => {
+        res.send(students);
     });
 });
 
 routes.get("/students/:id", (req, res) => {
     const id = req.params.id;
-    res.send(`Student with id: ${id}`);
+    const student = StudentModel.findById(id).then((student) => {
+        res.status(200).send(student);
+    });
 });
 
 routes.post("/students", (req, res) => {

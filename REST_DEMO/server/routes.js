@@ -4,10 +4,9 @@ import StudentModel from './models/student.js';
 const app = express();
 const routes = express.Router();
 
-routes.get('/students', (req, res) => {
-    StudentModel.find({}).then((students) => {
-        res.send(students);
-    });
+routes.get('/students', async (req, res) => {
+    const resp = await StudentModel.find();
+    return res.status(200).json(resp);
 });
 
 routes.get("/students/:id", (req, res) => {

@@ -19,9 +19,12 @@ routes.get("/students/:id", (req, res) => {
 routes.post("/students", (req, res) => {
     const student = req.body;
 
+    if (student.name === "" || student.rollNo === "" || student.department === "" || student.age === "") {
+        return res.status(401).send({ msg: "Enter the all details...!" });
+    }
     const studentModel = new StudentModel(student);
     studentModel.save();
-    res.status(201).send(studentModel);
+    return res.status(201).send(studentModel);
 });
 
 routes.put("/students/:id", (req, res) => {
@@ -30,9 +33,10 @@ routes.put("/students/:id", (req, res) => {
     res.send(`Student with id: ${id} updated`);
 });
 
-routes.delete("/students/:id", (req, res) => {
+routes.delete("/students/:id", async (req, res) => {
     const id = req.params.id;
-    res.send(`Student with id: ${id} deleted`);
+    const resp = await StudentModel.deleteOne({ _id: id });
+    res.status(200).send(resp);
 });
 
 export default routes;

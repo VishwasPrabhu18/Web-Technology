@@ -1,10 +1,10 @@
 import React from 'react'
-import { StudentList } from './components/index'
+import { AddStudent, StudentList } from './components/index'
 
 const App = () => {
   return (
-    <div>
-      <StudentList />
+    <div className='container mx-auto  my-8 sm:px-56 px-0'>
+      <AddStudent />
     </div>
   )
 }

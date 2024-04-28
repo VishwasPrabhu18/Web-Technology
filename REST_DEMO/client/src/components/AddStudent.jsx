@@ -1,20 +1,48 @@
 import React, { useState, Fragment } from 'react';
 import { Transition, Dialog } from "@headlessui/react"
+import StudentList from './StudentList';
 
 const AddStudent = () => {
 
   const [isOpen, setIsOpen] = useState(false);
+  const [student, setStudent] = useState({ name: "", rollNo: "", department: "", age: "" });
+  const [responseData, setResponseData] = useState(null);
 
   const openModal = () => {
     setIsOpen(true);
   }
 
   const closeModal = () => {
+    setStudent({ name: "", rollNo: "", department: "", age: "" });
     setIsOpen(false);
   }
 
-  const saveStudent = (e) => {
-    
+  const handleChange = (e) => {
+    setStudent({ ...student, [e.target.name]: e.target.value });
+  }
+
+  const saveStudent = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await fetch("http://localhost:8080/api/students", {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(student)
+      });
+
+      if (res.ok) {
+        console.log("Data added Successfully");
+        setResponseData(student)
+        closeModal();
+      } else {
+        console.log("Enter all fields data...");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -49,18 +77,30 @@ const AddStudent = () => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="w-auto max-w-md transform overflow-hidden rounded-2xl bg-white py-6 px-10 text-left align-middle shadow-xl transition-all">
                   <Dialog.Title
                     as="h3"
                     className="text-lg font-medium leading-6 text-gray-900"
                   >
                     Add New Student
                   </Dialog.Title>
-                  <div className="mt-2">
-                    <p className="text-sm text-gray-500">
-                      Your payment has been successfully submitted. We’ve sent
-                      you an email with all of the details of your order.
-                    </p>
+                  <div className="mt-4 flex flex-col gap-4">
+                    <div>
+                      <label htmlFor="name">Name</label>
+                      <input type="text" name="name" value={student.name} onChange={handleChange} className='w-full border border-blue-300 rounded-md outline-none px-3 h-10 my-1 text-gray-500' />
+                    </div>
+                    <div>
+                      <label htmlFor="name">Roll No</label>
+                      <input type="text" name="rollNo" value={student.rollNo} onChange={handleChange} className='w-full border border-blue-300 rounded-md outline-none px-3 h-10 my-1 text-gray-500' />
+                    </div>
+                    <div>
+                      <label htmlFor="name">Department</label>
+                      <input type="text" name="department" value={student.department} onChange={handleChange} className='w-full border border-blue-300 rounded-md outline-none px-3 h-10 my-1 text-gray-500' />
+                    </div>
+                    <div>
+                      <label htmlFor="name">Age</label>
+                      <input type="text" name="age" value={student.age} onChange={handleChange} className='w-full border border-blue-300 rounded-md outline-none px-3 h-10 my-1 text-gray-500' />
+                    </div>
                   </div>
 
                   <div className="mt-4 flex justify-normal gap-4">
@@ -83,6 +123,8 @@ const AddStudent = () => {
           </div>
         </Dialog>
       </Transition>
+
+      <StudentList responseData={responseData} />
     </>
   )
 }

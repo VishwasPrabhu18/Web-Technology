@@ -1,5 +1,5 @@
 import express from 'express';
-import StudentModel from './models/student.js';
+import StudentModel from '../models/student.js';
 
 const app = express();
 const routes = express.Router();
@@ -9,12 +9,12 @@ routes.get('/students', async (req, res) => {
     return res.status(200).json(resp);
 });
 
-routes.get("/students/:id", (req, res) => {
-    const id = req.params.id;
-    const student = StudentModel.findById(id).then((student) => {
-        res.status(200).send(student);
-    });
-});
+// routes.get("/students/:id", (req, res) => {
+//     const id = req.params.id;
+//     const student = StudentModel.findById(id).then((student) => {
+//         res.status(200).send(student);
+//     });
+// });
 
 routes.post("/students", (req, res) => {
     const student = req.body;
@@ -37,6 +37,12 @@ routes.delete("/students/:id", async (req, res) => {
     const id = req.params.id;
     const resp = await StudentModel.deleteOne({ _id: id });
     res.status(200).send(resp);
+});
+
+routes.get("/students/search", async (req, res) => {
+    const text = req.query.text;
+    console.log(text);
+    res.status(200).send({ msg: text });
 });
 
 export default routes;

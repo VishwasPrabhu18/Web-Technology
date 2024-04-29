@@ -10,7 +10,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-app.use("/api", routes);
+app.use("/api/students", routes);
 
 app.listen(8080, () => {
     console.log('Server is running on http://localhost:8080');

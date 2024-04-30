@@ -1,5 +1,5 @@
 import React from 'react'
-import { AddStudent, StudentList } from './components/index'
+import { AddStudent } from './components/index'
 
 const App = () => {
   return (

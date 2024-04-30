@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useEffect } from 'react';
 import { Transition, Dialog } from "@headlessui/react"
 import StudentList from './StudentList';
 
@@ -6,7 +6,8 @@ const AddStudent = () => {
 
   const [isOpen, setIsOpen] = useState(false);
   const [student, setStudent] = useState({ name: "", rollNo: "", department: "", age: "" });
-  const [responseData, setResponseData] = useState(null);
+  const [responseData, setResponseData] = useState({ name: "", rollNo: "", department: "", age: "" });
+  const [searchQuery, setSearchQuery] = useState("");
 
   const openModal = () => {
     setIsOpen(true);
@@ -25,7 +26,7 @@ const AddStudent = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:8080/api/students", {
+      const res = await fetch("http://localhost:8080/api/students/add", {
         method: 'POST',
         headers: {
           "Content-Type": "application/json"
@@ -45,11 +46,45 @@ const AddStudent = () => {
     }
   }
 
+  const handleChangeSearch = async (e) => {
+    setSearchQuery(e.target.value);
+  }
+
+  useEffect(() => {
+    const fetchSearchData = async () => {
+      try {
+        const result = await fetch(`http://localhost:8080/api/students/search/${searchQuery}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json"
+          },
+        });
+
+        if (result.ok) {
+          const data = await result.json();
+          setResponseData(data);
+        } else {
+          alert("Student Data not found..");
+          setSearchQuery("");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    if (searchQuery.length >= 1) {
+      fetchSearchData();
+    }
+    if (searchQuery.length === 0) {
+      setResponseData({ name: "", rollNo: "", department: "", age: "" });
+    }
+  }, [searchQuery]);
+
   return (
     <>
       <div className='my-6 flex justify-between'>
         <button type="button" onClick={openModal} className="px-5 py-2.5 text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 rounded text-center">Add Student</button>
-        <input type="search" name="search" id="search" className='w-64 border border-blue-300 rounded-md outline-none px-3 text-gray-500' placeholder='Search Student...' />
+        <input type="search" name="search" onChange={handleChangeSearch} value={searchQuery} id="search" className='w-64 border border-blue-300 rounded-md outline-none px-3 text-gray-500' placeholder='Search by Student Name' />
       </div>
 
       <Transition appear show={isOpen} as={Fragment}>
@@ -124,7 +159,7 @@ const AddStudent = () => {
         </Dialog>
       </Transition>
 
-      <StudentList responseData={responseData} />
+      <StudentList studentData={responseData} />
     </>
   )
 }

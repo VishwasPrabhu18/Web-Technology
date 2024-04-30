@@ -45,26 +45,22 @@ export const searchStudent = async (req, res) => {
 
   try {
     let students;
-    // Check if the queryText is a number (considering it as rollNo)
+
     if (!isNaN(queryText)) {
-      // Search for students by rollNo
-      students = await StudentModel.find({ rollNo: queryText });
+      const parsedRollNo = parseInt(queryText);
+      students = await StudentModel.find({ rollNo: parsedRollNo });
     } else {
-      // Search for students by name
       students = await StudentModel.find({
-        name: { $regex: queryText, $options: 'i' } // Case-insensitive substring search by name
+        name: { $regex: `^${queryText}`, $options: 'i' }
       });
     }
 
-    // If no students are found
     if (students.length === 0) {
       return res.status(404).json({ message: 'No students found' });
     }
 
-    // If students are found, return them
-    res.status(200).json({ message: 'Students found', students: students });
+    res.status(200).json(students);
   } catch (error) {
-    // If an error occurs during the search
     console.error('Error searching for students:', error);
     res.status(500).json({ error: 'An error occurred while searching for students' });
   }

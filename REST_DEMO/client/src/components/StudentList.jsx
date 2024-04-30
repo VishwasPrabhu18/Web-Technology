@@ -1,22 +1,33 @@
 import React, { useEffect, useState } from 'react'
 import Student from './Student';
+import EditStudent from './EditStudent';
 
-const StudentList = ({ responseData }) => {
+const StudentList = ({ studentData }) => {
 
   const [loading, setLoading] = useState(true);
   const [students, setStudents] = useState(null);
-  // const [students, setStudents] = useState(null);
-
+  const [responseData, setResponseData] = useState(null);
 
   useEffect(() => {
     const fetchStudents = async () => {
-      try {
-        const res = await fetch("http://localhost:8080/api/students");
-        const data = await res.json();
 
-        if (data) {
-          setLoading(false);
-          setStudents(data);
+      // setResponseData(studentData);
+      // const resdata = studentData===undefined ? JSON.parse([...studentData]) : studentData;
+      // console.log(resdata);
+
+      try {
+        if (studentData.length === undefined) {
+          const res = await fetch("http://localhost:8080/api/students");
+          const data = await res.json();
+
+          if (data) {
+            setLoading(false);
+            setStudents(data);
+          }
+        } else {
+          const resData = [...studentData];
+          // console.log(resData);
+          setStudents(resData);
         }
       } catch (error) {
         console.log(error);
@@ -24,7 +35,7 @@ const StudentList = ({ responseData }) => {
     }
 
     fetchStudents();
-  }, [students, responseData]);
+  }, [studentData, responseData]);
 
   const deleteStudent = (id) => {
     fetch(`http://localhost:8080/api/students/${id}`, {
@@ -63,6 +74,8 @@ const StudentList = ({ responseData }) => {
           </tbody>
         </table>
       </div>
+
+      {/* <EditStudent /> */}
     </div>
   )
 }

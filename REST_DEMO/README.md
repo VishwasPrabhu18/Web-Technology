@@ -8,7 +8,7 @@
 
 <body>
   <h2>Installation Procedure</h2>
-  <ol>
+  <ol type="1">
     <li>Clone this repository : <a href="https://github.com/VishwasPrabhu18/Web-Technology.git">Link</a></li>
     <li>Open REST_DEMO folder</li>
     <li>Install packages

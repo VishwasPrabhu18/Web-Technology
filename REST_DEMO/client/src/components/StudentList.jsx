@@ -7,14 +7,10 @@ const StudentList = ({ studentData }) => {
   const [loading, setLoading] = useState(true);
   const [students, setStudents] = useState(null);
   const [responseData, setResponseData] = useState(null);
+  const [studId, setStudId] = useState(null);
 
   useEffect(() => {
     const fetchStudents = async () => {
-
-      // setResponseData(studentData);
-      // const resdata = studentData===undefined ? JSON.parse([...studentData]) : studentData;
-      // console.log(resdata);
-
       try {
         if (studentData.length === undefined) {
           const res = await fetch("http://localhost:8080/api/students");
@@ -37,7 +33,14 @@ const StudentList = ({ studentData }) => {
     fetchStudents();
   }, [studentData, responseData]);
 
-  const deleteStudent = (id) => {
+  const editStudent = (e, id) => {
+    e.preventDefault();
+    setStudId(id);
+  }
+
+  const deleteStudent = async (e, id) => {
+    e.preventDefault();
+
     fetch(`http://localhost:8080/api/students/${id}`, {
       method: 'DELETE'
     }).then((res) => {
@@ -69,13 +72,13 @@ const StudentList = ({ studentData }) => {
             {
               loading
                 ? <tr><td colSpan={6} className='text-center text-gray-500 text-lg font-semibold px-6 py-4 whitespace-nowrap'>Loading...</td></tr>
-                : students.map((stud, idx) => <Student key={idx} stud={stud} id={idx + 1} deleteStudent={deleteStudent} />)
+                : students.map((stud, idx) => <Student key={idx} stud={stud} id={idx + 1} editStudent={editStudent} deleteStudent={deleteStudent} />)
             }
           </tbody>
         </table>
       </div>
 
-      {/* <EditStudent /> */}
+      <EditStudent studId={studId} />
     </div>
   )
 }

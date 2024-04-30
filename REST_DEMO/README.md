@@ -13,8 +13,8 @@
     <li>Open REST_DEMO folder</li>
     <li>Install packages
       <ol>
-        <li>Open Terminal in <i>client</i> folder and run <b>npm install</b></li>
-        <li>Open Terminal in <i>server</i> folder and run <b>npm install</b></li>
+        <li>Open Terminal in <i>client</i> folder and run <code><b>npm install</b></code></li>
+        <li>Open Terminal in <i>server</i> folder and run <code><b>npm install</b></code></li>
       </ol>
     </li>
     <li>Run the application

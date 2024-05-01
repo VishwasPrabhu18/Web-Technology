@@ -1,6 +1,7 @@
 import React, { useState, Fragment, useEffect } from 'react';
 import { Transition, Dialog } from "@headlessui/react"
 import StudentList from './StudentList';
+import { toast } from 'react-toastify';
 
 const AddStudent = () => {
 
@@ -35,11 +36,11 @@ const AddStudent = () => {
       });
 
       if (res.ok) {
-        console.log("Data added Successfully");
+        toast.success("New Student added Successfully");
         setResponseData(student)
         closeModal();
       } else {
-        console.log("Enter all fields data...");
+        toast.error("Enter all fields data...");
       }
     } catch (error) {
       console.log(error);
@@ -64,7 +65,7 @@ const AddStudent = () => {
           const data = await result.json();
           setResponseData(data);
         } else {
-          alert("Student Data not found..");
+          toast.error("Student Data not found..");
           setSearchQuery("");
         }
       } catch (error) {

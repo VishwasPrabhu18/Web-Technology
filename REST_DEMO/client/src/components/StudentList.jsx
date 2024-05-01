@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Student from './Student';
 import EditStudent from './EditStudent';
+import { toast } from 'react-toastify';
 
 const StudentList = ({ studentData }) => {
 
@@ -22,7 +23,6 @@ const StudentList = ({ studentData }) => {
           }
         } else {
           const resData = [...studentData];
-          // console.log(resData);
           setStudents(resData);
         }
       } catch (error) {
@@ -48,6 +48,9 @@ const StudentList = ({ studentData }) => {
         setStudents((prevElem) => {
           return prevElem.filter((stud) => stud._id !== id);
         });
+        toast.success("Student Deleted Successfully");
+      } else {
+        toast.error("Error while deleting");
       }
     }).catch((error) => {
       console.error('Error:', error);

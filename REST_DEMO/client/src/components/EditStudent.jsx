@@ -1,5 +1,6 @@
 import { Dialog, Transition } from '@headlessui/react';
 import React, { Fragment, useEffect, useState } from 'react'
+import { toast } from 'react-toastify';
 
 const EditStudent = ({ studId, setResponseData }) => {
 
@@ -31,14 +32,17 @@ const EditStudent = ({ studId, setResponseData }) => {
         body: JSON.stringify(student),
       });
 
+      const data = await res.json();
       if (res.ok) {
-        const data = await res.json();
         setResponseData(data);
+        toast.success("Update Successfull");
       } else {
+        toast.error(data.msg);
         console.log("Error");
       }
       closeModal();
     } catch (error) {
+      toast.error(error.message);
       console.log(error);
     }
   };

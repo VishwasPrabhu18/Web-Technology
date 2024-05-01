@@ -78,7 +78,7 @@ const StudentList = ({ studentData }) => {
         </table>
       </div>
 
-      <EditStudent studId={studId} />
+      <EditStudent studId={studId} setResponseData={setResponseData} />
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import { Dialog, Transition } from '@headlessui/react';
 import React, { Fragment, useEffect, useState } from 'react'
 
-const EditStudent = ({ studId }) => {
+const EditStudent = ({ studId, setResponseData }) => {
 
   const [isOpen, setIsOpen] = useState(false);
   const [student, setStudent] = useState({ name: "", rollNo: "", department: "", age: "" });
@@ -19,9 +19,31 @@ const EditStudent = ({ studId }) => {
     setStudent({ ...student, [e.target.name]: e.target.value });
   }
 
-  const updateStudent = () => { };
+  const updateStudent = async (e) => {
+    e.preventDefault();
 
-  useEffect(() => { 
+    try {
+      const res = await fetch(`http://localhost:8080/api/students/${studId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(student),
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        setResponseData(data);
+      } else {
+        console.log("Error");
+      }
+      closeModal();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
     const fetchStudent = async () => {
       try {
         const res = await fetch(`http://localhost:8080/api/students/${studId}`);
@@ -114,8 +136,6 @@ const EditStudent = ({ studId }) => {
           </div>
         </Dialog>
       </Transition>
-
-      {/* <StudentList studentData={responseData} /> */}
     </>
   )
 }

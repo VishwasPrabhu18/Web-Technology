@@ -53,7 +53,6 @@ export const deleteStudent = async (req, res) => {
 
 export const searchStudent = async (req, res) => {
   const queryText = req.params.queryText;
-  console.log(queryText);
 
   if (!queryText) {
     return res.status(400).json({ error: 'Query text is required' });

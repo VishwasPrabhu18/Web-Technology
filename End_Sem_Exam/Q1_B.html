@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>Document</title>
+</head>
+
+<body>
+  <nav class="navbar mx-5 mb-5 align-items-center">
+
+    <div class="d-flex">
+      <span href="#about" class="nav-link" onmouseenter="showlist(1)" onmouseleave="hideList(1)">About
+        <datalist id="aboutNav" style="position: absolute; display: none;">
+          <option>Sub Link 1</option>
+          <option>Sub Link 2</option>
+        </datalist>
+      </span>
+      <span href="#service" class="nav-link" onmouseenter="showlist(2)" onmouseleave="hideList(2)">Services
+        <datalist id="serviceNav" style="position: absolute; display: none;">
+          <option>Sub Link 1</option>
+          <option>Sub Link 2</option>
+        </datalist>
+      </span>
+      <span href="#contact" class="nav-link" onmouseenter="showlist(3)" onmouseleave="hideList(3)">Contact
+        <datalist id="contactNav" style="position: absolute; display: none;">
+          <option>Sub Link 1</option>
+          <option>Sub Link 2</option>
+        </datalist>
+      </span>
+    </div>
+
+    <div class="navbar-brand d-flex align-items-center gap-2">
+      <img src="../assets/bootstrap.jpg" alt="img" width="40">
+      <h5 class="navbar-brand">Bootstrap</h5>
+    </div>
+
+    <div class="d-flex">
+      <span href="#faq" class="nav-link" onmouseenter="showlist(4)" onmouseleave="hideList(4)">FAQ
+        <datalist id="faqNav" style="position: absolute; display: none;">
+          <option>Sub Link 1</option>
+          <option>Sub Link 2</option>
+        </datalist>
+      </span>
+      <span href="#support" class="nav-link" onmouseenter="showlist(5)" onmouseleave="hideList(5)">Support
+        <datalist id="supportNav" style="position: absolute; display: none;">
+          <option>Sub Link 1</option>
+          <option>Sub Link 2</option>
+        </datalist>
+      </span>
+    </div>
+  </nav>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+  <script>
+    function showlist(id) {
+      switch (id) {
+        case 1: document.getElementById("aboutNav").style.display = "block"
+          break;
+        case 2: document.getElementById("serviceNav").style.display = "block"
+          break;
+        case 3: document.getElementById("contactNav").style.display = "block"
+          break;
+        case 4: document.getElementById("faqNav").style.display = "block"
+          break;
+        case 5: document.getElementById("supportNav").style.display = "block"
+          break;
+      }
+    }
+
+    function hideList(id) {
+      switch (id) {
+        case 1: document.getElementById("aboutNav").style.display = "none"
+          break;
+        case 2: document.getElementById("serviceNav").style.display = "none"
+          break;
+        case 3: document.getElementById("contactNav").style.display = "none"
+          break;
+          case 4: document.getElementById("faqNav").style.display = "none"
+            break;
+          case 5: document.getElementById("supportNav").style.display = "none"
+            break;
+      }
+    }
+  </script>
+</body>
+
+</html>
